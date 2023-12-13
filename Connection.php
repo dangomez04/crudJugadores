@@ -8,9 +8,9 @@ class Connection{
 
     private $user = "root";
 
-    private $password = "";
+    private $password = "bbdd";
 
-    private $db = "myplayers";
+    private $db = "dg_myplayers";
 
     public function getConnection(){
         return $conexion = new mysqli(

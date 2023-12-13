@@ -1,0 +1,23 @@
+table{
+    border: 1px solid black;
+    width: 800px;
+    margin: 0px auto;
+    margin-top: 30px;
+    border-collapse: collapse;
+
+}
+
+td{
+    text-align: center;
+    padding: 10px;
+    
+}
+
+tr#cabecera{
+    background-color: lightblue;
+}
+
+form{
+    margin-left: 20px;
+}
+

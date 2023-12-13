@@ -12,13 +12,15 @@ require("CheckSession.php");
 
 </head>
 <body>
-<p>Bienvenido <?php echo $_SESSION["usuario"];?></p>
 
 <div id="menu">
-
+    <?php if($_SESSION["rol"] == "admin"){?>
     <a href="Usuarios.php">Usuarios</a>
+    <?php }?>
     <a href="Jugadores.php">Jugadores</a>
     <a href="Ligas.php">Ligas</a>
+    <a href="Roles.php">Roles</a>
+
     <a href="index.php?cerrarSesion">Cerrar Sesión</a>
 </div>
 </body>

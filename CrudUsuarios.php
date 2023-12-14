@@ -1,5 +1,5 @@
 <?php 
-require("Connection.php");
+require_once("Connection.php");
 
 class Usuarios{
 
@@ -12,6 +12,14 @@ class Usuarios{
         return $result->fetch_all(MYSQLI_BOTH);
         //print_r($result->fetch_array());
 
+    }
+
+    public function addUsuario($data){
+        $sqlConnection = new Connection();
+        $mySQL = $sqlConnection->getConnection();
+        $sql = "INSERT INTO usuarios (nombreUsuario, password, id_rol) VALUES ('$data[0]', '$data[1]', '$data[2]')";
+        $mySQL->query($sql);
+        $sqlConnection->closeConnection($mySQL);
     }
 
 

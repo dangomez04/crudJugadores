@@ -1,5 +1,5 @@
 <?php 
-require("Connection.php");
+require_once("Connection.php");
 
 class Jugadores{
 
@@ -13,6 +13,24 @@ class Jugadores{
         //print_r($result->fetch_array());
 
     }
+
+    public function addJugadores($data){
+        $sqlConnection = new Connection();
+        $mySQL = $sqlConnection->getConnection();
+        $sql = "INSERT INTO jugadores (nombre, liga,img) VALUES ('$data[0]', '$data[1]','$data[2]')";
+        $mySQL->query($sql) or die($mySQL->error);
+        $sqlConnection->closeConnection($mySQL);
+    }
+
+    public function deleteJugador($data){
+        $sqlConnection = new Connection();
+        $mySQL = $sqlConnection->getConnection();
+        $sql = "DELETE FROM jugadores WHERE id = $data[0]";
+        $mySQL->query($sql);
+        $sqlConnection->closeConnection($mySQL);
+    }
+
+
 
 
 

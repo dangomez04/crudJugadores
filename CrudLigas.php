@@ -1,5 +1,5 @@
 <?php 
-require("Connection.php");
+require_once("Connection.php");
 
 class Ligas{
 
@@ -14,7 +14,21 @@ class Ligas{
 
     }
 
+    public function addLigas($data){
+        $sqlConnection = new Connection();
+        $mySQL = $sqlConnection->getConnection();
+        $sql = "INSERT INTO liga (nombreLiga, imagenLiga) VALUES ('$data[0]', '$data[1]')";
+        $mySQL->query($sql) or die($mySQL->error);
+        $sqlConnection->closeConnection($mySQL);
+    }
 
+    public function deleteLiga($data){
+        $sqlConnection = new Connection();
+        $mySQL = $sqlConnection->getConnection();
+        $sql = "DELETE FROM liga WHERE idLiga = $data[0]";
+        $mySQL->query($sql);
+        $sqlConnection->closeConnection($mySQL);
+    }
 
 }
 

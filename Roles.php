@@ -3,6 +3,16 @@ require("CrudRoles.php");
 $database = new Roles();
 $roles = $database->showRoles();
 
+
+if(isset($_POST["enviarRol"])){
+
+    $rol = $_POST["rolIntro"];
+
+    $data =[$rol];
+    $database->addRol($data);
+    header("location:Roles.php");
+
+}
 ?>
 
 <!DOCTYPE html>

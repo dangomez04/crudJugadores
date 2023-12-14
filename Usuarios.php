@@ -1,7 +1,20 @@
 <?php 
 require("CrudUsuarios.php");
+require("CrudRoles.php");
 $database = new Usuarios();
+$databaseRoles = new Roles();
+$roles = $databaseRoles->showRoles();
 $usuarios = $database->showUsuario();
+
+if(isset($_POST["enviarUsuario"])){
+$nombre = $_POST["usuarioIntro"];
+$password = md5($_POST["passwordIntro"]);
+$rol = $_POST["selectedRol"];
+
+$data =[$nombre,$password,$rol];
+$database->addUsuario($data);
+header("location:Usuarios.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,12 +32,12 @@ require("menu.php");
 <br></br>
     <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
     <h2>Crear Usuario</h2>
-    Nombre:  <input type="text" name="rolIntro" id=""><br><br>
+    Nombre:  <input type="text" name="usuarioIntro" id=""><br><br>
     Password: <input type="password" name="passwordIntro"><br><br>
-    Rol: <select>
-        <?php foreach ($usuarios as $user) {
+    Rol: <select name="selectedRol">
+        <?php foreach ($roles as $rol) {
         ?>
-        <option value="<?php echo $user[3];?>"><?php echo $user[4];?></option>
+        <option value="<?php echo $rol['id'];?>"><?php echo $rol['rol'];?></option>
         <?php }?>
     </select><br><br>
     <input type="submit" value="Enviar" name="enviarUsuario">

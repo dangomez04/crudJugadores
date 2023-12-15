@@ -1,5 +1,8 @@
 <?php 
 require("CheckSession.php");
+include("inactividad.php");
+
+
 ?>
 
 <!DOCTYPE html>

@@ -40,7 +40,9 @@ foreach ($usuarios as $usuariobbdd) {
  
 
 
-
+ if(isset($_GET["sesionExpirada"])){
+    echo "<h2>Sesion Expirada</h2>";
+}
 
 ?>
 
